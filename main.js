@@ -1,5 +1,5 @@
-import * as components from './src/index'
-console.log('Running main')
+import * as components from '@/index'
+
 const ComponentLibrary = {
     install(Vue) {
     console.log('Component library')
