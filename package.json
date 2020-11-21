@@ -8,12 +8,14 @@
   "unpkg": "dist/vue-vocabulary.umd.min.js",
   "files": [
       "dist/*",
-      "src/**/*.vue"
+      "src/**/*.vue",
+      "src/index.js"
   ],
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "npm run index && vue-cli-service build --target lib --name vue-vocabulary --dest ./dist --entry ./src/index.js",
+    "build": "npm run index && vue-cli-service build --target lib --name vue-vocabulary --dest ./dist --entry ./src/index.js --formats commonjs,umd,umd-min",
     "test:unit": "vue-cli-service test:unit",
+    "test": "Echo 'No tests available'",
     "lint": "vue-cli-service lint",
     "build:documentation": "npm run build && vue-cli-service storybook:build -s ./src/assets -o ./docs",
     "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'",
