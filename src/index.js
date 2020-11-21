@@ -19,14 +19,3 @@ export {
   VRadio,
   SlotRenderer
 }
-
-// Export as plugin
-export const VueVocabulary = {
-  install: function (Vue) {
-    Vue.component('DonateButton', DonateButton)
-    Vue.component('VButton', VButton)
-    Vue.component('VCheckbox', VCheckbox)
-    Vue.component('VRadio', VRadio)
-    Vue.component('SlotRenderer', SlotRenderer)
-  }
-}

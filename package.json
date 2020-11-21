@@ -2,14 +2,13 @@
   "name": "vulib",
   "version": "0.1.4",
   "private": false,
-  "main": "dist/vue-vocabulary.common.js",
+  "main": "dist/index.js",
   "browser": "dist/vue-vocabulary.esm.js",
-  "module": "dist/vue-vocabulary.esm.js",
+  "module": "dist/index.esm.js",
   "unpkg": "dist/vue-vocabulary.umd.min.js",
   "files": [
     "dist/*",
-    "src/**/*.vue",
-    "src/index.js"
+    "src/*"
   ],
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -26,9 +25,7 @@
     "build:scss": "sass src/assets/vue-vocabulary-build.scss | node ./library/banner.js > dist/vue-vocabulary.css && cleancss -o dist/vue-vocabulary.min.css dist/vue-vocabulary.css",
     "build:scss:watch": "sass src/scss/vue-vocabulary.scss --watch",
     "build:lib": "rimraf dist && npm run build:js && npm run build:scss",
-    "build:lib:watch": "concurrently \"npm run build:js:watch\" \"npm run build:scss:watch \" ",
-    "build:docs": "node build/build.js && copyfiles --flat netlify.toml dist-docs",
-    "build": "npm run build:lib && npm run build:docs"
+    "build": "npm run build:js"
   },
   "dependencies": {
     "@vue/babel-helper-vue-jsx-merge-props": "^1.0.0",
@@ -37,6 +34,7 @@
     "focus-trap-vue": "^1.1.0",
     "lodash": "^4.17.20",
     "node-sass": "^5.0.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
     "sass-loader": "^10.0.5",
     "twemoji": "^13.0.1",
     "vue": "^2.6.11",

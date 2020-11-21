@@ -1,25 +1,22 @@
 import vue from 'rollup-plugin-vue'
-export default [
-  // ESM build to be used with webpack/rollup.
-  {
-    input: 'src/index.js',
-    output: {
-      format: 'esm',
-      file: 'dist/library.esm.js'
+import peerDepsExternal from "rollup-plugin-peer-deps-external";
+import resolve from "@rollup/plugin-node-resolve";
+import commonjs from "@rollup/plugin-commonjs";
+import packageJson from "./package.json";
+
+export default {
+  input: "src/index.js",
+  output: [
+    {
+      format: "cjs",
+      file: packageJson.main,
+      sourcemap: true
     },
-    plugins: [
-      vue()
-    ]
-  },
-  // Browser build.
-  {
-    input: 'main.js',
-    output: {
-      format: 'iife',
-      file: 'dist/library.js'
-    },
-    plugins: [
-      vue()
-    ]
-  }
-]
+    {
+      format: "esm",
+      file: packageJson.module,
+      sourcemap: true
+    }
+  ],
+  plugins: [peerDepsExternal(), resolve(), commonjs(), vue()]
+}
