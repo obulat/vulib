@@ -1,9 +1,7 @@
-import * as components from '@/index'
+import * as components from './src/index.js'
 
-const ComponentLibrary = {
+const VueVocabulary = {
     install(Vue) {
-    console.log('Component library')
-
     // components
     for (const componentName in components) {
       const component = components[componentName]
@@ -13,8 +11,8 @@ const ComponentLibrary = {
   }
 }
 
-export default ComponentLibrary
+export default VueVocabulary
 
 if (typeof window !== 'undefined' && window.Vue) {
-  window.Vue.use(ComponentLibrary)
+  window.Vue.use(VueVocabulary)
 }

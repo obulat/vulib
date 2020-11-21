@@ -5,9 +5,28 @@
  * the next build. To make changes, edit [library/build.js].
  */
 
+import DonateButton from 'src/elements/DonateButton/DonateButton'
+import VButton from 'src/elements/VButton/VButton'
+import VCheckbox from 'src/elements/VCheckbox/VCheckbox'
+import VRadio from 'src/elements/VRadio/VRadio'
+import SlotRenderer from 'src/utilities/SlotRenderer/SlotRenderer'
+
 // Export individual components
-export { default as DonateButton } from './elements/DonateButton/DonateButton'
-export { default as VButton } from './elements/VButton/VButton'
-export { default as VCheckbox } from './elements/VCheckbox/VCheckbox'
-export { default as VRadio } from './elements/VRadio/VRadio'
-export { default as SlotRenderer } from './utilities/SlotRenderer/SlotRenderer'
+export {
+  DonateButton,
+  VButton,
+  VCheckbox,
+  VRadio,
+  SlotRenderer
+}
+
+// Export as plugin
+export const VueVocabulary = {
+  install: function (Vue) {
+    Vue.component('DonateButton', DonateButton)
+    Vue.component('VButton', VButton)
+    Vue.component('VCheckbox', VCheckbox)
+    Vue.component('VRadio', VRadio)
+    Vue.component('SlotRenderer', SlotRenderer)
+  }
+}

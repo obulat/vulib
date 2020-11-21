@@ -79,13 +79,27 @@ function formContent () {
    * newline-separated, no comma at the end
    * @type {string}
    */
-  const exports = libComponents
+  const imports = libComponents
     .map((comp) => {
       const { name, path } = comp
-      return `export { default as ${name} } from '${path}'`
+      return `import ${name} from '${path}'`
     }).join('\n')
+  const components = libComponents
+    .map((comp, index) => {
+      return index === libComponents.length - 1
+        ? `  ${comp.name}`
+        : `  ${comp.name},`
+    })
+    .join('\n')
 
-
+  /**
+   * Produces Vue component registration statements for all components in libComponents,
+   * newline-separated
+   * @type {string}
+   */
+  const registrations = libComponents
+    .map((comp) => `    Vue.component('${comp.name}', ${comp.name})`)
+    .join('\n')
   process.stdout.write(chalk.green('done\n'))
 
   const indexStencilContent = fs.readFileSync(
@@ -95,7 +109,9 @@ function formContent () {
     }
   )
   return indexStencilContent
-    .replace('{{exports}}', exports)
+    .replace('{{imports}}', imports)
+    .replace('{{components}}', components)
+    .replace('{{registrations}}', registrations)
 }
 
 function writeIndex (fileContent) {
