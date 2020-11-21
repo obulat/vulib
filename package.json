@@ -7,8 +7,12 @@
   "module": "dist/index.esm.js",
   "unpkg": "dist/vue-vocabulary.umd.min.js",
   "files": [
-    "dist/*",
-    "src/*"
+    "dist",
+    "src"
+  ],
+  "sideEffects": [
+    "*.css",
+    "*.scss"
   ],
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -67,6 +71,7 @@
     "babel-eslint": "^10.1.0",
     "babel-jest": "^26.2.2",
     "babel-loader": "^8.0.6",
+    "bili": "^5.0.5",
     "bulma": "^0.9.1",
     "chalk": "^4.1.0",
     "clean-css-cli": "^4.3.0",
