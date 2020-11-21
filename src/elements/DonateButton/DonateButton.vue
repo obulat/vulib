@@ -7,7 +7,7 @@
 
 <script>
   import VButton from '../VButton/VButton'
-  import { sized } from '@/mixins/sized'
+  import { sized } from '../../mixins/sized'
 
   export default {
     name: 'DonateButton',

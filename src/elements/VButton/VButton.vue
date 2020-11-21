@@ -6,8 +6,8 @@
 </template>
 
 <script>
-  import { sized } from '@/mixins/sized'
-  import { theme } from '@/utilities/values'
+  import { sized } from '../../mixins/sized'
+  import { theme } from '../../utilities/values'
 
   export default {
     name: 'VButton',

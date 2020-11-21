@@ -57,7 +57,8 @@ const vuePluginConfig = {
         includePaths: ['node_modules'],
       }
     }
-  }
+  },
+  include: [/\.vue$/i, 'src/utilities', 'src/mixins']
 }
 
 export default () => {
@@ -73,12 +74,14 @@ export default () => {
           banner: bannerTxt,
           exports: 'named',
           globals: {
-            vue: 'Vue'
+            vue: 'Vue',
+            "@": 'src'
           }
         },
         plugins: [
           node({
-            extensions: ['.vue', '.js']
+            extensions: ['.vue', '.js'],
+            preferBuiltins: false
           }),
           cjs(),
           vue(vuePluginConfig),
